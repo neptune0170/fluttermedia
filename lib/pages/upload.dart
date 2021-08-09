@@ -1,5 +1,6 @@
 import 'dart:io';
-
+// import 'package:location/location.dart';
+// import 'package:geocoder/geocoder.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
@@ -266,19 +267,17 @@ class _UploadState extends State<Upload> {
   }
 
   getUserLocation() async {
-    // Position position = await Geolocator.getCurrentPosition(
-    //     desiredAccuracy: LocationAccuracy.high);
-    // print(position);
-    // List<Placemark> placemakrs =
-    //     await placemarkFromCoordinates(position.latitude, position.longitude);
+    Position position = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high);
 
-    // Placemark placemark = placemakrs[0];
-    // String completeAddress =
-    //     '${placemark.subThoroughfare} ${placemark.thoroughfare}, ${placemark.subLocality} ${placemark.locality}, ${placemark.subAdministrativeArea}, ${placemark.administrativeArea} ${placemark.postalCode}, ${placemark.country}';
-    // print(completeAddress);
-    // String formattedAddress = "${placemark.locality}, ${placemark.country}";
+    List<Placemark> placemakrs =
+        await placemarkFromCoordinates(position.latitude, position.longitude);
 
-    // locationController.text = formattedAddress;
+    Placemark placemark = placemakrs[0];
+
+    String formattedAddress = "${placemark.locality}, ${placemark.country}";
+
+    locationController.text = formattedAddress;
   }
 
   @override

@@ -7,6 +7,8 @@ void main() async {
   await Firebase.initializeApp();
   runApp(MyApp());
 }
+//video last 4 upload,
+ //getlocation
 
 class MyApp extends StatelessWidget {
   @override
