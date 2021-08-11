@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttermedia/widgets/custom_image.dart';
 import '../models/user.dart';
 import '../pages/timeline.dart';
 import '../widgets/progress.dart';
@@ -124,7 +125,7 @@ class _PostState extends State<Post> {
       child: Stack(
         alignment: Alignment.center,
         children: <Widget>[
-          Image.network(mediaUrl),
+          cachedNetworkImage(mediaUrl),
         ],
       ),
     );
