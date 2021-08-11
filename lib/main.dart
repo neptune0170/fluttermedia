@@ -8,7 +8,7 @@ void main() async {
   runApp(MyApp());
 }
 //video last 4 upload,
- //getlocation
+//getlocation
 
 class MyApp extends StatelessWidget {
   @override
