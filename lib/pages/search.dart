@@ -2,9 +2,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:fluttermedia/models/user.dart';
-import 'package:fluttermedia/pages/home.dart';
-import 'package:fluttermedia/widgets/progress.dart';
+import '../models/user.dart';
+import '../pages/activity_feed.dart';
+import '../pages/home.dart';
+import '../widgets/progress.dart';
 
 class Search extends StatefulWidget {
   @override
@@ -81,24 +82,22 @@ class _SearchState extends State<Search> {
       future: searchResultsFuture,
       builder: (context, snapshot) {
         if (!snapshot.hasData) {
-          Duration(seconds: 5);
           return circularProgress();
-        } else {
-          List<UserResult> searchResults = [];
-          snapshot.data.docs.forEach((doc) {
-            User user = User.fromDocument(doc);
-            UserResult searchResult = UserResult(user);
-            searchResults.add(searchResult);
-            print('here - > ${user.username}');
-          });
-          return ListView(
-            children: searchResults,
-          );
         }
+        List<UserResult> searchResults = [];
+        snapshot.data.docs.forEach((doc) {
+          User user = User.fromDocument(doc);
+          UserResult searchResult = UserResult(user);
+          searchResults.add(searchResult);
+        });
+        return ListView(
+          children: searchResults,
+        );
       },
     );
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor.withOpacity(0.8),
@@ -111,7 +110,9 @@ class _SearchState extends State<Search> {
 
 class UserResult extends StatelessWidget {
   final User user;
+
   UserResult(this.user);
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -119,7 +120,7 @@ class UserResult extends StatelessWidget {
       child: Column(
         children: <Widget>[
           GestureDetector(
-            onTap: () => print('tapped'),
+            onTap: () => showProfile(context, profileId: user.id),
             child: ListTile(
               leading: CircleAvatar(
                 backgroundColor: Colors.grey,
