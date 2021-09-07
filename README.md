@@ -12,7 +12,7 @@ Post photo updates from moments in your life
 
 ## Comming Soon
 Receive notifications when someone likes or comments on your post,
-Message Your Friends and Followers with End to End encrypted because your privacy matters.
+Message Your Friends and Followers with End to End Encryption because your privacy matters.
 
 
 ## OVERVIEW/IMAGES
