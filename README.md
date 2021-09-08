@@ -17,6 +17,3 @@ Message Your Friends and Followers with End to End Encryption because your priva
 
 ## OVERVIEW/IMAGES
 ![](imagess/img3.png)
-
-![](imagess/img1.PNG)
-![](imagess/img2.PNG)
